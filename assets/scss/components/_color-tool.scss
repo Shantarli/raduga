@@ -1,0 +1,44 @@
+.color-tool {
+    position: absolute;
+    top: 0;
+    background: rgba(119, 119, 119, 0.5);
+    border-radius: 1rem;
+    display: grid;
+    grid-template-columns: 3rem 8rem 3rem;
+    grid-gap: 1rem;
+    align-items: center;
+    justify-items: center;
+    overflow: hidden;
+    backdrop-filter: blur(1rem);
+    -webkit-backdrop-filter: blur(1rem);
+    z-index: 5;
+
+    @include media-query(sm) {
+        left: -11rem !important;
+        grid-template-columns: 3rem 6rem 3rem !important;
+
+        .color-input-wrapper {
+            order: 1
+        }
+
+        .save-button {
+            order: -1
+        }
+    }
+
+}
+
+.color-tool-toggle {
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+
+    &:hover {
+        .color-mark {
+            transform: scale(1.5);
+        }
+    }
+}

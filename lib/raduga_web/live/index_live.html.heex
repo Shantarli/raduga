@@ -1,0 +1,20 @@
+<script defer phx-track-static type="text/javascript" src="/assets/index.js" />
+<div class="index-page">
+  <img class="logo-full" src="/logo-full.svg" alt="Raduga Logotype" />
+
+  <%= if assigns[:last_room] do %>
+    <span>
+      <button phx-click="open-last-room">open last room</button> or
+      <button phx-click="create-random-room">create a new one</button>
+    </span>
+  <% else %>
+    <span>
+      <button phx-click="create-random-room">create a room</button>
+    </span>
+  <% end %>
+  <p class="welcome-link">
+    <a href="https://shantarli.me/web/raduga" target="_blank">
+      read the introductory post
+    </a>
+  </p>
+</div>

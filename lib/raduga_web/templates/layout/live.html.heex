@@ -1,0 +1,14 @@
+<main class="raduga">
+  <div class="alert alert-info" role="alert" phx-click="lv:clear-flash" phx-value-key="info" title="Click to close">
+    <%= live_flash(@flash, :info) %>
+  </div>
+
+  <div class="alert alert-danger" role="alert" phx-click="lv:clear-flash" phx-value-key="error" title="Click to close">
+    <%= live_flash(@flash, :error) %>
+  </div>
+  <div class="loadscreen">
+    <img class="logo-full" src="/logo-full.svg" alt="Raduga Logotype" />
+    <p>loading</p>
+  </div>
+  <%= @inner_content %>
+</main>

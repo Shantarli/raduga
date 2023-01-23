@@ -1,0 +1,100 @@
+.sidebar {
+    position: absolute;
+    left: 0rem;
+    top: 0rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    padding: 1rem 0.5rem;
+
+    @include media-query(sm) {
+        left: initial;
+        right: 0;
+    }
+
+    &.mini {
+        background: none;
+
+        .logo-arc {
+            mix-blend-mode: difference;
+        }
+
+        .icon {
+            mix-blend-mode: difference;
+        }
+    }
+
+    #delete-button {
+        bottom: 2rem;
+    }
+
+    button {
+        width: 3rem;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            z-index: 1;
+            pointer-events: none;
+            transition: $transition-all-bezier;
+        }
+
+        &:hover {
+            .icon {
+                width: 32px;
+                height: 32px;
+            }
+        }
+    }
+
+    .spinner {
+        position: fixed;
+        bottom: 2rem;
+    }
+}
+
+// Mobile landscape
+@media screen and (orientation: landscape) and (hover: none) and (pointer: coarse) {
+    .logo-arc {
+        margin-bottom: 0 !important;
+        margin-right: 1rem;
+    }
+
+    .sidebar {
+        flex-direction: row !important;
+        top: 0;
+        height: 4rem !important;
+        width: 100%;
+    }
+
+    .color-palette {
+        grid-template-columns: repeat(7, 1fr);
+    }
+
+    #delete-button {
+        position: fixed;
+        bottom: 0rem !important;
+        right: 0;
+        background: rgba(0, 0, 0, 0.75);
+        border-radius: 1rem 0 0 0;
+    }
+
+    #sharebar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+}

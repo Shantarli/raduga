@@ -1,0 +1,51 @@
+.loadscreen {
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $color-black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-direction: column;
+    z-index: 666;
+    transition: opacity 0.25s ease-in-out 0s;
+    pointer-events: none;
+
+    .logo-full {
+        margin-top: calc(-5rem + 0px);
+    }
+
+    @include media-query(sm) {
+        .logo-full {
+            margin-top: calc(-3rem + 0px);
+        }
+    }
+
+    p {
+        padding: 5px;
+    }
+}
+
+// Phoenix related stuff
+.phx-loading {
+    .loadscreen {
+        opacity: 1;
+        pointer-events: initial;
+    }
+}
+
+.phx-connected {
+    .loadscreen {
+        opacity: 0 !important;
+    }
+}
+
+.phx-loading,
+.phx-connected {
+    height: 100%;
+    min-height: 100%;
+}

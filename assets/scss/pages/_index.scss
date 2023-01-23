@@ -1,0 +1,33 @@
+#index-canvas {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.index-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    z-index: 1;
+
+    button {
+        margin: 0 0.4rem;
+        padding: 6px 6px;
+
+        &:hover {
+            padding-bottom: 4px;
+            border-bottom: 2px solid white;
+        }
+
+    }
+
+    .welcome-link {
+        position: absolute;
+        bottom: 4rem;
+    }
+}

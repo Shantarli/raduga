@@ -1,0 +1,29 @@
+// Share panel with QR code attached to the canvas
+#sharebar {
+    position: absolute;
+    left: 5rem;
+    top: 8rem;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 1rem;
+    border-radius: 1rem;
+    z-index: 98;
+    line-height: 0;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+
+    canvas {
+        border-radius: 6px;
+    }
+
+    @include media-query(sm) {
+        z-index: 90;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0;
+        left: 0;
+        top: 0;
+    }
+}

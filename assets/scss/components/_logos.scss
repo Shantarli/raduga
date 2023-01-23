@@ -1,0 +1,15 @@
+.logo-full {
+    margin-top: -6rem;
+
+    @include media-query(sm) {
+        margin-top: -4rem;
+        width: 18rem;
+    }
+}
+
+.logo-arc {
+    width: 3rem;
+    height: 3rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}

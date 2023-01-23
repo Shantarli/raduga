@@ -1,0 +1,42 @@
+.color-palette {
+    display: grid;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+
+    @include media-query(sm) {
+        grid-template-columns: 1fr;
+        grid-gap: 0rem;
+    }
+}
+
+.color-row {
+    position: relative;
+
+    &.active {
+        .color-mark {
+            transform: scale(1.50);
+        }
+    }
+}
+
+.color-mark {
+    z-index: 1;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 0px solid white;
+    transition: $transition-all-bezier;
+    pointer-events: none;
+}
+
+.color-mark-separator {
+    width: 14px;
+    height: 14px;
+    mix-blend-mode: difference;
+    background: white;
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(4px);
+    opacity: 0.5;
+}

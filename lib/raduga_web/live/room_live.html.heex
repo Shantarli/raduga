@@ -1,0 +1,92 @@
+<script defer type="text/javascript" src="/assets/room.js" />
+<%= if assigns[:message] do %>
+  <p><%= @message %></p>
+  <a href="#" phx-click="go-home">Go home</a>
+<% end %>
+
+<%= if !assigns[:message] do %>
+  <span>waiting for sync</span>
+  <div id="color-viewer" phx-update="ignore" data-room={@room.name} data-user={@user_id} />
+
+  <div class="sidebar mini" x-data x-show="! $store.state.sidebar.visible">
+    <button
+      id="mini-sidebar-home-button"
+      class="with-icon logo"
+      title="Open Homepage"
+      phx-hook="Navigation"
+      @click="$dispatch('go-home')"
+    >
+      <img src="/logo-arc.svg" class="icon" />
+    </button>
+    <button class="with-icon" title="Show sidebar" @click="$store.state.sidebar.toggle()">
+      <img src="/icons/show-icon.svg" class="icon" />
+    </button>
+  </div>
+
+  <div id="sharebar" x-data x-show="$store.state.sharebar.visible" phx-update="ignore">
+    <canvas id="qr-canvas"></canvas>
+  </div>
+
+  <div
+    id="main-sidebar"
+    class="sidebar"
+    x-show="$store.state.sidebar.visible"
+    x-data
+    @keydown.window.debounce.50ms="keyboard.down($event)"
+    phx-hook="DataBus"
+  >
+    <button
+      id="sidebar-home-button"
+      class="with-icon logo"
+      title="Open Homepage"
+      phx-hook="Navigation"
+      @click="$dispatch('go-home')"
+    >
+      <img src="/logo-arc.svg" class="icon" />
+    </button>
+
+    <button
+      class="with-icon"
+      title="Hide sidebar"
+      @click="$store.state.sidebar.toggle(), $store.state.sharebar.visible = false"
+    >
+      <img src="/icons/hide-icon.svg" class="icon" />
+    </button>
+
+    <button
+      class="with-icon"
+      title="Open QR Code"
+      @click="$store.state.sharebar.toggle()"
+      @click.away="$store.state.sharebar.visible = false"
+    >
+      <img src="/icons/qr-icon.svg" class="icon" />
+    </button>
+
+    <.live_component
+      module={RadugaWeb.Components.ColorPaletteComponent}
+      id="phx-color-palette"
+      room={@room}
+      isOwner={assigns.is_owner}
+    />
+
+    <%!-- DELETE BUTTON --%>
+    <%= if length(@room.colors) > 1 && assigns[:is_owner] do %>
+      <button
+        id="delete-button"
+        class="with-icon"
+        title="Delete"
+        x-show="$store.state.selected.id"
+        @click="
+          $store.state.isLoading = true,
+          $dispatch('delete-color', {color_id: $store.state.selected.id}), $store.state.selected.clear()"
+        phx-hook="DeleteColor"
+      >
+        <img src="/icons/delete-icon.svg" class="icon" />
+      </button>
+    <% end %>
+
+    <div class="spinner" :class="$store.state.isLoading && 'visible'">
+      <img src="/icons/spinner-icon.svg" class="icon rotating" />
+    </div>
+  </div>
+<% end %>

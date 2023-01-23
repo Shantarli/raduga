@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "alpinejs": "^3.10.5",
+    "qrcode": "^1.5.1"
+  }
+}
