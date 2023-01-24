@@ -44,3 +44,6 @@ npm-debug.log
 
 # MacOS related
 .DS_Store
+
+# Log file
+log/raduga_info.log

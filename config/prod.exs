@@ -10,7 +10,7 @@ import Config
 # which you should run after static files are built and
 # before starting your production server.
 config :raduga, RadugaWeb.Endpoint,
-  http: [ip: {0, 0, 0, 0}, port: 4200, compress: true],
+  http: [ip: {0, 0, 0, 0}, port: 4000, compress: true],
   cache_static_manifest: "priv/static/cache_manifest.json",
   secret_key_base: "zaHtZ6q+vvUEqZ/RRJSYLo8B6uS4s0f6CXsY/0OGri7VqX+Pi6TmArSGCixHJh8q",
   http: [ip: {0, 0, 0, 0}, port: 4000],
